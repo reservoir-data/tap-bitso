@@ -9,7 +9,7 @@ Built with the Meltano [SDK](https://gitlab.com/meltano/sdk) for Singer Taps.
 ## Installation
 
 ```bash
-uv tool install git+https://github.com/edgarrmondragon/tap-bitso.git
+uv tool install git+https://github.com/reservoir-data/tap-bitso.git
 ```
 
 ## Configuration
