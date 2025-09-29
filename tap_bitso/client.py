@@ -124,4 +124,4 @@ class AuthenticatedBitsoStream(BitsoStream):
         Returns:
             The Bitso API authenticator object.
         """
-        return BitsoAuthenticator.create_for_stream(self)
+        return BitsoAuthenticator(key=self.config["key"], secret=self.config["secret"])

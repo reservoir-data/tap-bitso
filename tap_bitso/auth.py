@@ -14,28 +14,17 @@ from singer_sdk.authenticators import APIAuthenticatorBase
 if TYPE_CHECKING:
     from requests import PreparedRequest
 
-    from tap_bitso.client import BitsoStream
-
 logger = logging.getLogger(__name__)
 
 
 class BitsoAuthenticator(APIAuthenticatorBase):
     """Authenticator class for Bitso."""
 
-    @classmethod
-    def create_for_stream(
-        cls: type[BitsoAuthenticator],
-        stream: BitsoStream,
-    ) -> BitsoAuthenticator:
-        """Create the authenticator for the stream.
-
-        Args:
-            stream: A Singer stream class.
-
-        Returns:
-            An authenticator instance.
-        """
-        return cls(stream=stream)
+    def __init__(self, *, key: str, secret: str) -> None:
+        """Initialize the BitsoAuthenticator."""
+        super().__init__()
+        self._key = key
+        self._secret = secret
 
     def authenticate_request(
         self: BitsoAuthenticator,
@@ -54,8 +43,8 @@ class BitsoAuthenticator(APIAuthenticatorBase):
         .. _requests.Request:
             https://docs.python-requests.org/en/latest/api/#requests.PreparedRequest
         """
-        bitso_key: str = self.config["key"]
-        bitso_secret: str = self.config["secret"]
+        bitso_key: str = self._key
+        bitso_secret: str = self._secret
         nonce = str(round(time.time() * 1000))
 
         parsed = urlparse(request.url)
