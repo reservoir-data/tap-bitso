@@ -91,8 +91,9 @@ Now you can test and orchestrate using Meltano:
 ```bash
 # Test invocation:
 meltano invoke tap-bitso --version
-# OR run a test `elt` pipeline:
-meltano elt tap-bitso target-sqlite
+
+# OR run a test EL pipeline:
+meltano run tap-bitso target-sqlite
 ```
 
 ### SDK Dev Guide
