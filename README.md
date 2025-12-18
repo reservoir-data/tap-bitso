@@ -1,10 +1,33 @@
+<div align="center">
+
 # tap-bitso
 
-⚠️ Warning: this project is under active development, essential features are still missing and implementation subject to change. ⚠️
+<div>
+  <a href="https://github.com/reservoir-data/tap-bitso/blob/main/LICENSE">
+    <img alt="License" src="https://img.shields.io/github/license/reservoir-data/tap-bitso"/>
+  </a>
+  <a href="https://results.pre-commit.ci/latest/github/reservoir-data/tap-bitso/main">
+    <img alt="pre-commit.ci status" src="https://results.pre-commit.ci/badge/github/reservoir-data/tap-bitso/main.svg"/>
+  </a>
+  <a href="https://scientific-python.org/specs/spec-0000/">
+    <img alt="SPEC 0 — Minimum Supported Dependencies" src="https://img.shields.io/badge/SPEC-0-green"/>
+  </a>
+  <a href="https://github.com/astral-sh/ruff">
+    <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v2.json" alt="Ruff" style="max-width:100%;">
+  </a>
+  <a href="https://github.com/astral-sh/uv">
+   <img alt="uv" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json"/>
+  </a>
+  <a href="https://pypi.org/p/tap-bitso/">
+    <img alt="Python versions" src="https://img.shields.io/pypi/pyversions/tap-bitso"/>
+  </a>
+</div>
 
-`tap-bitso` is a Singer tap for the [Bitso API](https://bitso.com/api_info).
+Singer tap for the [Bitso API](https://bitso.com/api_info).
 
 Built with the Meltano [SDK](https://gitlab.com/meltano/sdk) for Singer Taps.
+
+</div>
 
 ## Installation
 

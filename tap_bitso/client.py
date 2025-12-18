@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-import sys
 import typing as t
 from http import HTTPStatus
+from typing import override
 
 import requests
 import requests.exceptions
@@ -13,11 +13,6 @@ from singer_sdk.exceptions import RetriableAPIError
 from singer_sdk.streams import RESTStream
 
 from tap_bitso.auth import BitsoAuthenticator
-
-if sys.version_info >= (3, 12):
-    from typing import override
-else:
-    from typing_extensions import override
 
 if t.TYPE_CHECKING:
     from collections.abc import Callable
