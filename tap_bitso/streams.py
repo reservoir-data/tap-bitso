@@ -243,6 +243,11 @@ class BooksStream(BitsoStream):
             required=True,
         ),
         th.Property(
+            "margin_enabled",
+            th.BooleanType,
+            description="Indicates whether margin trading is enabled for this book",
+        ),
+        th.Property(
             "tick_size",
             th.StringType,
             examples=["0.01"],
