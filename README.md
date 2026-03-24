@@ -46,12 +46,12 @@ tap is available by running:
 tap-bitso --about
 ```
 
-| Field      | Description             | Type           | Required | Default                 |
+| Field | Description | Type | Required | Default |
 |------------|-------------------------|----------------|----------|-------------------------|
-| `key`      | Bitso API Key           | `string`       | yes      |                         |
-| `secret`   | Bitso API Secret        | `string`       | yes      |                         |
-| `base_url` | Bitso API URL           | `string`       | no       | `https://api.bitso.com` |
-| `books`    | Tickers to get data for | `list(string)` | no       | `["btc_mxn"]`           |
+| `key` | Bitso API Key | `string` | yes | |
+| `secret` | Bitso API Secret | `string` | yes | |
+| `base_url` | Bitso API URL | `string` | no | `https://api.bitso.com` |
+| `books` | Tickers to get data for | `list(string)` | no | `["btc_mxn"]` |
 
 ### Source Authentication and Authorization
 
@@ -77,11 +77,10 @@ tap-bitso --config CONFIG --discover > ./catalog.json
 uv sync
 ```
 
-
 ### Create and Run Tests
 
 Create tests within the `tap_bitso/tests` subfolder and
-  then run:
+then run:
 
 ```bash
 uv run pytest
@@ -92,7 +91,6 @@ You can also test the `tap-bitso` CLI interface directly using `uv run`:
 ```bash
 uv run tap-bitso --help
 ```
-
 
 ### Testing with [Meltano](https://www.meltano.com)
 
