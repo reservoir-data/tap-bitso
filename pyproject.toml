@@ -2,7 +2,7 @@
 build-backend = "hatchling.build"
 requires = [
   "hatch-vcs==0.5",
-  "hatchling==1.28",
+  "hatchling==1.29",
 ]
 
 [project]
@@ -34,7 +34,7 @@ dynamic = [
 ]
 dependencies = [
   "requests~=2.32.3",
-  "singer-sdk~=0.53.2",
+  "singer-sdk~=0.54.0a4",
   "stamina~=25.2.0",
 ]
 urls.Documentation = "https://github.com/reservoir-data/tap-bitso#readme"
