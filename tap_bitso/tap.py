@@ -36,7 +36,7 @@ class TapBitso(Tap):
         ),
         th.Property(
             "books",
-            th.ArrayType(th.StringType),  # ty: ignore[invalid-argument-type]
+            th.ArrayType(th.StringType),
             default=["btc_mxn"],
             description=(
                 "Specifies which book to use for `tickers` and other endpoints"

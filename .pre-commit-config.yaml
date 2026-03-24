@@ -40,3 +40,13 @@ repos:
   hooks:
     - id: uv-lock
     - id: uv-sync
+
+- repo: https://github.com/hukkin/mdformat
+  rev: 1.0.0
+  hooks:
+    - id: mdformat
+
+- repo: https://github.com/crate-ci/typos
+  rev: v1.44.0
+  hooks:
+    - id: typos
