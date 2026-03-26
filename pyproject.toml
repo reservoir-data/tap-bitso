@@ -26,7 +26,7 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "requests~=2.32.3",
+  "requests~=2.33.0",
   "singer-sdk~=0.54.0a4",
   "stamina~=25.2.0",
 ]
