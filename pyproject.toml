@@ -39,7 +39,7 @@ file = "LICENSE"
 name = "Edgar Ramírez-Mondragón"
 email = "edgarrm358@gmail.com"
 [project.scripts]
-"tap-bitso" = "tap_bitso.tap:TapBitso.cli"
+tap-bitso = "tap_bitso.tap:TapBitso.cli"
 [project.urls]
 Documentation = "https://github.com/reservoir-data/tap-bitso#readme"
 Homepage = "https://github.com/reservoir-data/tap-bitso"
@@ -94,6 +94,23 @@ pydocstyle.convention = "google"
 [tool.pyproject-fmt]
 table_format = "long"
 
+[tool.mypy]
+enable_error_code = [
+  "ignore-without-code",
+  "redundant-expr",
+  "truthy-bool",
+]
+strict = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_no_return = true
+warn_unreachable = true
+warn_unused_configs = true
+warn_unused_ignores = true
+
+[tool.ty.rules]
+unused-type-ignore-comment = "ignore"
+
 [tool.pytest]
 addopts = [ "-vvv", "-ra" ]
 filterwarnings = [ "error" ]
@@ -127,20 +144,3 @@ runner = "uv-venv-lock-runner"
 pass_env = [ "TAP_BITSO_*" ]
 dependency_groups = [ "testing" ]
 commands = [ [ "pytest", { replace = "posargs", default = [ "tests" ], extend = true } ] ]
-
-[tool.mypy]
-enable_error_code = [
-  "ignore-without-code",
-  "redundant-expr",
-  "truthy-bool",
-]
-strict = true
-warn_redundant_casts = true
-warn_return_any = true
-warn_no_return = true
-warn_unreachable = true
-warn_unused_configs = true
-warn_unused_ignores = true
-
-[tool.ty.rules]
-unused-type-ignore-comment = "ignore"
