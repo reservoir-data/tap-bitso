@@ -28,7 +28,7 @@ dynamic = [
 dependencies = [
   "requests~=2.33.0",
   "singer-sdk~=0.54.0a4",
-  "stamina~=25.2.0",
+  "stamina~=26.1.0",
 ]
 [[project.authors]]
 name = "Edgar Ramírez-Mondragón"
