@@ -26,8 +26,8 @@ dynamic = [
   "version",
 ]
 dependencies = [
-  "requests~=2.33.0",
-  "singer-sdk~=0.54.0a4",
+  "requests~=2.34.0",
+  "singer-sdk~=0.54.2",
   "stamina~=26.1.0",
 ]
 [[project.authors]]
@@ -58,7 +58,6 @@ testing = [
 typing = [
   "mypy>=1.17",
   "ty>=0.0.1a17",
-  "types-requests",
 ]
 
 [tool.hatch]
