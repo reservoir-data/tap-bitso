@@ -59,6 +59,8 @@ class BitsoAuthenticator(APIAuthenticatorBase):
                 request.body
                 if isinstance(request.body, str)
                 else request.body.decode("utf-8")
+                if isinstance(request.body, bytes)
+                else ""
             )
 
         if parsed.query:
