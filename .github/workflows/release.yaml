@@ -2,42 +2,45 @@ name: Build
 
 on:
   push:
+    tags: ["*"]
 
 permissions:
-  contents: write
-  id-token: write
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    name: Build and Inspect Python Package
+    runs-on: ubuntu-24.04
     outputs:
       package_name:  ${{ steps.baipp.outputs.package_name }}
       package_version: ${{ steps.baipp.outputs.package_version }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
       - uses: hynek/build-and-inspect-python-package@fe0a0fb1925ca263d076ca4f2c13e93a6e92a33e # v2.17.0
         id: baipp
 
   publish:
-    runs-on: ubuntu-latest
+    name: Publish to PyPI
+    runs-on: ubuntu-24.04
     needs: build
     if: startsWith(github.ref, 'refs/tags/')
     environment:
       name: publishing
       url: https://pypi.org/p/${{ needs.build.outputs.package_name }}/${{ needs.build.outputs.package_version }}
+    permissions:
+      id-token: write # Required by pypa/gh-action-pypi-publish for trusted publishing
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
       - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
           name: Packages
           path: dist
-      - name: Upload wheel to release
-        uses: svenstaro/upload-release-action@29e53e917877a24fad85510ded594ab3c9ca12de # 2.11.5
-        with:
-          file: dist/*.whl
-          tag: ${{ github.ref }}
-          overwrite: true
-          file_glob: true
-
-      - name: Publish
-        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # v1.14.0
+      - uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b # v1.14.0
