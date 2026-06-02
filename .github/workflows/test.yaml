@@ -30,11 +30,11 @@ concurrency:
 env:
   FORCE_COLOR: 1
   # renovate: datasource=pypi depName=uv
-  UV_VERSION: 0.11.7
+  UV_VERSION: 0.11.18
   # renovate: datasource=pypi depName=tox
-  TOX_VERSION: 4.53.0
+  TOX_VERSION: 4.55.0
   # renovate: datasource=pypi depName=tox-uv
-  TOX_UV_VERSION: 1.35.1
+  TOX_UV_VERSION: 1.35.2
 
 jobs:
   build-package:
@@ -61,6 +61,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      with:
+        persist-credentials: false
     - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
       with:
         python-version: ${{ matrix.python-version }}
@@ -69,16 +71,20 @@ jobs:
       env:
         TAP_BITSO_KEY: ${{ secrets.TAP_BITSO_KEY }}
         TAP_BITSO_SECRET: ${{ secrets.TAP_BITSO_SECRET }}
+        MATRIX_PYTHON_VERSION: ${{ matrix.python-version }}
       run: >
         uvx
-        --with tox-uv==${{ env.TOX_UV_VERSION }}
-        --with tox==${{ env.TOX_VERSION }}
-        tox -e ${{ matrix.python-version }}
+        --with tox-uv==${TOX_UV_VERSION}
+        --with tox==${TOX_VERSION}
+        tox -e ${MATRIX_PYTHON_VERSION}
 
   lint:
+    name: Lint
     runs-on: ubuntu-24.04
     steps:
     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      with:
+        persist-credentials: false
     - uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
       id: setup-python
     - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
@@ -87,8 +93,8 @@ jobs:
     - run: >
           uv tool install
           --managed-python
-          --with tox-uv==${{ env.TOX_UV_VERSION }}
-          --with tox==${{ env.TOX_VERSION }}
+          --with tox-uv==${TOX_UV_VERSION}
+          --with tox==${TOX_VERSION}
           tox
     - name: Static type checking
       run: tox -e typing

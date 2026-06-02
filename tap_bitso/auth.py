@@ -6,7 +6,7 @@ import hashlib
 import hmac
 import logging
 import time
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, override
 from urllib.parse import urlparse
 
 from singer_sdk.authenticators import APIAuthenticatorBase
@@ -26,6 +26,7 @@ class BitsoAuthenticator(APIAuthenticatorBase):
         self._key = key
         self._secret = secret
 
+    @override
     def authenticate_request(
         self: BitsoAuthenticator,
         request: PreparedRequest,
