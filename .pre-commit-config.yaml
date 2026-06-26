@@ -18,19 +18,19 @@ repos:
   - id: trailing-whitespace
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: v2.23.0
+  rev: v2.25.1
   hooks:
   - id: pyproject-fmt
 
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.15.15
+  rev: v0.15.20
   hooks:
   - id: ruff-check
     args: [--fix, --exit-non-zero-on-fix, --show-fixes]
   - id: ruff-format
 
 - repo: https://github.com/astral-sh/uv-pre-commit
-  rev: 0.11.18
+  rev: 0.11.24
   hooks:
     - id: uv-lock
     - id: uv-sync
@@ -41,6 +41,6 @@ repos:
     - id: mdformat
 
 - repo: https://github.com/crate-ci/typos
-  rev: v1.47.0
+  rev: v1.47.2
   hooks:
     - id: typos
