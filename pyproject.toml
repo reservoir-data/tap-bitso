@@ -80,6 +80,7 @@ ignore = [
   "FIX002",
   "ISC001",
   "PD",
+  "CPY001", # missing-copyright-notice
 ]
 per-file-ignores."tests/*" = [
   "ANN201",
